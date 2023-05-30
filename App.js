@@ -5,10 +5,17 @@ import { StyleSheet, Text, View } from "react-native";
 import "react-native-gesture-handler";
 import WelcomeScreen from "./app/screens/WelcomeScreen";
 import HomeScreen from "./app/screens/HomeScreen";
+import { useFonts } from "expo-font";
 
 const Stack = createStackNavigator();
 
 export default function App() {
+  const fontsLoaded = useFonts({
+    Ionicons: require("./assets/Fonts/Ionicons.ttf"),
+  });
+
+  if (!fontsLoaded) return null;
+
   return (
     <>
       <StatusBar backgroundColor="black"></StatusBar>
