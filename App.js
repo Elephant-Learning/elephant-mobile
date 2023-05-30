@@ -10,17 +10,20 @@ const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName="Welcome"
-        screenOptions={{
-          headerShown: false,
-        }}
-      >
-        <Stack.Screen name="Welcome" component={WelcomeScreen} />
-        <Stack.Screen name="Home" component={HomeScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <>
+      <StatusBar backgroundColor="black"></StatusBar>
+      <NavigationContainer>
+        <Stack.Navigator
+          initialRouteName="Welcome"
+          screenOptions={{
+            headerShown: false,
+          }}
+        >
+          <Stack.Screen name="Welcome" component={WelcomeScreen} />
+          <Stack.Screen name="HomeWrapper" component={HomeScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </>
   );
 }
 

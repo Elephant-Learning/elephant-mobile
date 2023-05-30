@@ -6,7 +6,7 @@ export default function WelcomeScreen({ navigation }) {
     <SafeAreaView>
       <Text
         onPress={() => {
-          navigation.navigate("Home");
+          navigation.navigate("HomeWrapper");
         }}
       >
         WelcomeScreen
