@@ -2,9 +2,12 @@ import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import React from "react";
 import { colors } from "../config/colors";
 
-export default function Button({ text, onPress }) {
+export default function Button({ text, onPress, marginTop }) {
   return (
-    <TouchableOpacity onPress={onPress} style={styles.button}>
+    <TouchableOpacity
+      onPress={onPress}
+      style={{ ...styles.button, marginTop: marginTop }}
+    >
       <Text style={styles.text}>{text}</Text>
     </TouchableOpacity>
   );
@@ -16,11 +19,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32,
     backgroundColor: colors.primaryAccent,
     borderRadius: 8,
-    margin: 4,
+    margin: 10,
   },
   text: {
     color: colors.bgColor1,
     fontFamily: "Semibold",
     fontSize: 20,
+    textAlign: "center",
   },
 });
