@@ -40,7 +40,7 @@ export default function HomeScreen() {
           component={Settings}
           options={{
             tabBarIcon: ({ color, size }) => {
-              return <Icon name="Settings" color={color} size={size} />;
+              return <Icon name="settings" color={color} size={size} />;
             },
           }}
         />
