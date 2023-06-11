@@ -1,0 +1,18 @@
+export const colors = {
+  hoverDark: "#0f0f0f",
+  darkGray: "black",
+  lightGray: "#010409",
+  bgColor1: "#ffffff",
+  bgColor2: "#f6f7fb",
+  lightBorderColor: "#ebebeb",
+  darkBordeColor: "#21262d",
+  hoverLight: "#f5f5f5",
+  primaryAccent: "#fe599d",
+  primaryAccentGradient: "#f30096",
+  secondaryAccent: "#00a8ff",
+  secondaryAccentGradient: "#31d6dc",
+  tertiaryAccent: "#f8680a",
+  tertiaryAccentGradient: "#fa8d37",
+  accentHiglight: "#f30096",
+  lightAccent: "#ffedf6",
+};

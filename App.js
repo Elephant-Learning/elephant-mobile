@@ -18,7 +18,7 @@ import {
 const Stack = createStackNavigator();
 
 export default function App() {
-  const fontsLoaded = useFonts({
+  const [fontsLoaded] = useFonts({
     Ionicons: require("./assets/Fonts/Ionicons.ttf"),
     Thin: Montserrat_100Thin,
     Light: Montserrat_300Light,
@@ -47,12 +47,3 @@ export default function App() {
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});

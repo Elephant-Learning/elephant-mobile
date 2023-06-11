@@ -5,6 +5,7 @@ import Flip from "./Flip";
 import { StatusBar } from "expo-status-bar";
 import Icon from "react-native-vector-icons/Ionicons";
 import Settings from "./Settings";
+import { colors } from "../config/colors";
 
 const Tab = createBottomTabNavigator();
 
@@ -24,6 +25,7 @@ export default function HomeScreen() {
             tabBarIcon: ({ color, size }) => {
               return <Icon name="book" color={color} size={size} />;
             },
+            tabBarActiveTintColor: colors.secondaryAccent,
           }}
         />
         <Tab.Screen
@@ -33,6 +35,7 @@ export default function HomeScreen() {
             tabBarIcon: ({ color, size }) => {
               return <Icon name="home" color={color} size={size} />;
             },
+            tabBarActiveTintColor: colors.secondaryAccent,
           }}
         />
         <Tab.Screen
@@ -42,6 +45,7 @@ export default function HomeScreen() {
             tabBarIcon: ({ color, size }) => {
               return <Icon name="settings" color={color} size={size} />;
             },
+            tabBarActiveTintColor: colors.secondaryAccent,
           }}
         />
       </Tab.Navigator>
