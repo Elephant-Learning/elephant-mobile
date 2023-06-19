@@ -17,6 +17,7 @@ export default function Settings() {
         </View>
       </View>
       <Button text="Edit" marginTop={20} />
+      <Button text="Sign Out" marginTop={1} type="secondary" />
     </SafeAreaView>
   );
 }
@@ -37,7 +38,7 @@ const styles = StyleSheet.create({
     resizeMode: "cover",
     width: 150,
     height: 150,
-    borderRadius: "50%",
+    borderRadius: 60,
   },
   profile: {
     display: "flex",
