@@ -14,6 +14,8 @@ import {
   Montserrat_700Bold,
   Montserrat_900Black,
 } from "@expo-google-fonts/montserrat";
+import SignUp from "./app/screens/SignUp";
+import Login from "./app/screens/Login";
 
 const Stack = createStackNavigator();
 
@@ -42,6 +44,8 @@ export default function App() {
         >
           <Stack.Screen name="Welcome" component={WelcomeScreen} />
           <Stack.Screen name="HomeWrapper" component={HomeScreen} />
+          <Stack.Screen name="Register" component={SignUp} />
+          <Stack.Screen name="Login" component={Login} />
         </Stack.Navigator>
       </NavigationContainer>
     </>

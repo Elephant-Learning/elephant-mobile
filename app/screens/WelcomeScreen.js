@@ -11,13 +11,13 @@ export default function WelcomeScreen({ navigation }) {
           <Button
             text={"Login"}
             onPress={() => {
-              navigation.navigate("HomeWrapper");
+              navigation.navigate("Login");
             }}
           />
           <Button
             text={"Register"}
             onPress={() => {
-              navigation.navigate("HomeWrapper");
+              navigation.navigate("Register");
             }}
           />
         </View>
