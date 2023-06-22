@@ -37,7 +37,12 @@ export default function Login({ navigation }) {
         password={true}
       />
       <View style={styles.footer}>
-        <Button text={"Login"} />
+        <Button
+          text={"Login"}
+          onPress={() => {
+            navigation.navigate("HomeWrapper");
+          }}
+        />
         <Button
           text={"Go Back"}
           type="secondary"
