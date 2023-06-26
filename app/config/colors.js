@@ -5,7 +5,7 @@ export const colors = {
   bgColor1: "#ffffff",
   bgColor2: "#f6f7fb",
   lightBorderColor: "#ebebeb",
-  darkBordeColor: "#21262d",
+  darkBorderColor: "#21262d",
   hoverLight: "#f5f5f5",
   primaryAccent: "#fe599d",
   primaryAccentGradient: "#f30096",
@@ -15,4 +15,5 @@ export const colors = {
   tertiaryAccentGradient: "#fa8d37",
   accentHiglight: "#f30096",
   lightAccent: "#ffedf6",
+  grayBorderColor: "#E2E8F0",
 };
