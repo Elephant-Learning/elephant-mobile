@@ -2,22 +2,12 @@ import { SafeAreaView, Text, StyleSheet, View } from "react-native";
 import React, { useState } from "react";
 import { colors } from "../config/colors";
 import Icon from "react-native-vector-icons/Ionicons";
-import { TouchableHighlight } from "react-native-gesture-handler";
 import { TouchableOpacity } from "react-native";
 
 export default function Flip() {
   const terms = ["asdf", "asd", "asdff", "dd", "asf", "as"];
 
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  const updateIndex = (amount) => {
-    setCurrentIndex(currentIndex + amount);
-    if (amount < 0) {
-      setCurrentIndex(Math.max(currentIndex, 0));
-      return;
-    }
-    setCurrentIndex(Math.min(currentIndex, terms.length));
-  };
 
   return (
     <SafeAreaView style={styles.container}>
