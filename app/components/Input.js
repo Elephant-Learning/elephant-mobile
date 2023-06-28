@@ -1,9 +1,8 @@
-import { StyleSheet, Text, SafeAreaView, TextInput, View } from "react-native";
+import { StyleSheet, TextInput, View } from "react-native";
 import React from "react";
 import { colors } from "../config/colors";
 
 export default function Input({
-  label,
   placeholder,
   icon,
   password = false,
