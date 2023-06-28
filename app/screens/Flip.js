@@ -1,34 +1,96 @@
-import { SafeAreaView, Text, StyleSheet, View } from "react-native";
-import React, { useState } from "react";
+import {
+  SafeAreaView,
+  Text,
+  StyleSheet,
+  View,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  Animated,
+  Easing,
+} from "react-native";
+import React, { useState, useRef } from "react";
 import { colors } from "../config/colors";
 import Icon from "react-native-vector-icons/Ionicons";
-import { TouchableOpacity } from "react-native";
 
 export default function Flip() {
   const terms = ["asdf", "asd", "asdff", "dd", "asf", "as"];
+  const definitions = ["a", "b", "c", "d", "e", "f"];
+  const [textRotateValue, setTextRotateValue] = useState("0deg");
+
+  const flipAnimation = useRef(new Animated.Value(0)).current;
+
+  const flipCard = () => {
+    Animated.timing(flipAnimation, {
+      toValue: 180,
+      duration: 500,
+      easing: Easing.linear,
+      useNativeDriver: true,
+    }).start();
+  };
 
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [onTerm, setOnTerm] = useState(true);
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.termContainer}>
-        <Text style={styles.text}>{terms[currentIndex]}</Text>
-      </View>
+      <TouchableWithoutFeedback
+        onPress={() => {
+          flipAnimation.setValue(0);
+          flipCard();
+          setOnTerm(!onTerm);
+          setTextRotateValue("180deg");
+        }}
+      >
+        <Animated.View
+          style={{
+            ...styles.termContainer,
+            transform: [
+              {
+                rotateY: flipAnimation.interpolate({
+                  inputRange: [0, 180],
+                  outputRange: ["0deg", "180deg"],
+                }),
+              },
+            ],
+          }}
+        >
+          <Text
+            style={{
+              ...styles.text,
+              fontFamily: onTerm ? "Bold" : "Regular",
+              transform: [
+                {
+                  rotateY: textRotateValue,
+                },
+              ],
+            }}
+          >
+            {onTerm ? terms[currentIndex] : definitions[currentIndex]}
+          </Text>
+        </Animated.View>
+      </TouchableWithoutFeedback>
       <View style={styles.buttonContainer}>
         <TouchableOpacity
           onPress={() => {
             setCurrentIndex(Math.max(currentIndex - 1, 0));
-            console.log(currentIndex);
           }}
         >
-          <Icon name="caret-back-circle-outline" size={80} />
+          <Icon
+            name="chevron-back-outline"
+            size={80}
+            color={colors.darkBorderColor}
+          />
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
             setCurrentIndex(Math.min(currentIndex + 1, terms.length - 1));
           }}
         >
-          <Icon name="caret-forward-circle-outline" size={80} />
+          <Icon
+            name="chevron-forward-outline"
+            size={80}
+            colors={colors.grayBorderColor}
+          />
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -46,7 +108,6 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 32,
-    fontFamily: "Bold",
   },
   termContainer: {
     height: "40%",
@@ -57,6 +118,7 @@ const styles = StyleSheet.create({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
   },
   buttonContainer: {
     display: "flex",
@@ -65,5 +127,6 @@ const styles = StyleSheet.create({
     width: "100%",
     justifyContent: "space-evenly",
     marginTop: 40,
+    gap: 160,
   },
 });
