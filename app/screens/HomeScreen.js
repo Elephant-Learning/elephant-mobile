@@ -9,7 +9,7 @@ import { colors } from "../config/colors";
 
 const Tab = createBottomTabNavigator();
 
-export default function HomeScreen() {
+export default function HomeScreen({route}) {
   return (
     <>
       <StatusBar backgroundColor="black"></StatusBar>
@@ -17,6 +17,7 @@ export default function HomeScreen() {
         screenOptions={{
           headerShown: false,
         }}
+        initialRouteName="Home"
       >
         <Tab.Screen
           name="Flip"
@@ -31,6 +32,7 @@ export default function HomeScreen() {
         <Tab.Screen
           name="Home"
           component={Home}
+          initialParams={route.params}
           options={{
             tabBarIcon: ({ color, size }) => {
               return <Icon name="home" color={color} size={size} />;

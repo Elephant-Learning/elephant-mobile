@@ -2,10 +2,14 @@ import { SafeAreaView, Text, StyleSheet, View } from "react-native";
 import React from "react";
 import DeckCard from "../components/DeckCard";
 
-export default function Home() {
+export default function Home({route}) {
+
+  const {id, firstName, decks} = route.params;
+
+
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.header}>Welcome, Advay Patil</Text>
+      <Text style={styles.header}>Welcome, {firstName}</Text>
       <View
         style={{
           borderBottomColor: "black",
