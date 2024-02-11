@@ -19,18 +19,10 @@ export default function Home({route}) {
         }}
       />
       <View style={styles.contentContainer}>
-        <DeckCard
-          title={"Deck 1"}
-          backImg={require("../../assets/test2.jpg")}
-        />
-        <DeckCard
-          title={"Deck 2"}
-          backImg={require("../../assets/test2.jpg")}
-        />
-        <DeckCard
-          title={"Deck 3"}
-          backImg={require("../../assets/test2.jpg")}
-        />
+        {decks.map((e, idx) => {
+          return <DeckCard title={e.name} 
+          backImg={require("../../assets/test2.jpg")} key={idx}/>
+        })}
       </View>
     </SafeAreaView>
   );
