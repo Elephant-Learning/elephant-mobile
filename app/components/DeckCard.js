@@ -1,9 +1,9 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import React from "react";
 
-export default function DeckCard({ onPress = () => {}, backImg, title }) {
+export default function DeckCard({ onPress = () => {}, backImg, title, key }) {
   return (
-    <TouchableOpacity style={styles.container} onPress={onPress}>
+    <TouchableOpacity style={styles.container} onPress={onPress} key={key}>
       <Image
         source={backImg}
         style={{
