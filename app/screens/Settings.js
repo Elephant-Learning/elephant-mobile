@@ -4,15 +4,18 @@ import { colors } from "../config/colors";
 import { SafeAreaView } from "react-native";
 import Button from "../components/Button";
 
-export default function Settings() {
+export default function Settings({route}) {
+
+  const {firstName, type, email} = route.params;
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.profile}>
         <Image style={styles.image} source={require("../../assets/test.jpg")} />
         <View style={styles.info}>
-          <Text style={styles.nameText}>Advay Patil</Text>
-          <Text style={styles.accountType}>Elephant Student</Text>
-          <Text style={styles.email}>advaypatil27@gmail.com</Text>
+          <Text style={styles.nameText}>{firstName}</Text>
+          <Text style={styles.accountType}>{type}</Text>
+          <Text style={styles.email}>{email}</Text>
           <Text style={styles.streak}>0 Streak</Text>
         </View>
       </View>
