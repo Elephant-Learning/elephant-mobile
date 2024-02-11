@@ -67,16 +67,18 @@ export default function Login({ navigation }) {
           setPassword(e);
         }}
       />
-      <View>
+      {!loginStatus && <View>
         <Text style={styles.errorText}>
           Error: {message}
         </Text>
-      </View>
+      </View>}
       <View style={styles.footer}>
         <Button
           text={"Login"}
           onPress={() => {
             if (!email || !password) {
+              setLoginStatus(false);
+              setMessage("Please complete all fields");
               return;
             }
             
