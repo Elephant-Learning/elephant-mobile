@@ -5,6 +5,7 @@ import { colors } from "../config/colors";
 export default function Input({
   placeholder,
   icon,
+  onChange,
   password = false,
   keyboardType = "default",
   height = 40,
@@ -19,6 +20,9 @@ export default function Input({
         style={{ ...styles.input, height: height, width: width }}
         secureTextEntry={password}
         keyboardType={keyboardType}
+        onChangeText={(e) => {
+          onChange(e);
+        }}
       />
     </View>
   );
