@@ -85,6 +85,14 @@ export default function Login({ navigation }) {
             fetchRequest().then((e) => {
               setLoginStatus(e.status != "FAILURE");
               setMessage(e.message ?? "");
+
+              const {id, decks, firstName} = e.context.user;
+
+              if (loginStatus) {
+                navigation.navigate("HomeWrapper",
+                  {id, decks, firstName}
+                );
+              }
             });
 
           }}
@@ -122,7 +130,7 @@ const styles = StyleSheet.create({
   },
   errorText: {
     fontFamily: 'Regular',
-    color: "red",
+    color: 'red',
     fontSize: 16,
     marginTop: 15,
   }
