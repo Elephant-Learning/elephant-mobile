@@ -1,14 +1,38 @@
 import { StyleSheet, Text } from "react-native";
-import React from "react";
+import React, { useRef, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { colors } from "../config/colors";
 import { View } from "react-native";
 import Button from "../components/Button";
 import Input from "../components/Input";
 import Icon from "react-native-vector-icons/Ionicons";
-import { useState } from "react";
+
 
 export default function Login({ navigation }) {
+
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+
+  const fetchRequest = async () => {
+    const response = await fetch('https://elephantsuite-rearend.herokuapp.com/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'DELETE, POST, GET, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type'
+      },
+      body: JSON.stringify({ email, password }),
+      mode: 'cors' 
+    },
+    )
+
+    console.log('sent');
+
+    const ctx = await response.json();
+    console.log(ctx);
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.header}>Login</Text>
@@ -23,6 +47,9 @@ export default function Login({ navigation }) {
         }
         width="80%"
         keyboardType="email-address"
+        onChange={(e) => {
+          setEmail(e);
+        }}
       />
       <Input
         placeholder={"Password"}
@@ -35,12 +62,20 @@ export default function Login({ navigation }) {
         }
         width="80%"
         password={true}
+        onChange={(e) => {
+          setPassword(e);
+        }}
       />
       <View style={styles.footer}>
         <Button
           text={"Login"}
           onPress={() => {
-            navigation.navigate("HomeWrapper");
+            if (!email || !password) {
+              return;
+            }
+            
+            fetchRequest().then();
+
           }}
         />
         <Button
