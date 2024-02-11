@@ -43,6 +43,7 @@ export default function HomeScreen({route}) {
         <Tab.Screen
           name="settings"
           component={Settings}
+          initialParams={route.params}
           options={{
             tabBarIcon: ({ color, size }) => {
               return <Icon name="settings" color={color} size={size} />;

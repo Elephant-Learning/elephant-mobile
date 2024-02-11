@@ -86,13 +86,13 @@ export default function Login({ navigation }) {
               setLoginStatus(e.status != "FAILURE");
               setMessage(e.message ?? "");
 
-              const {id, decks, firstName} = e.context.user;
+              const {id, decks, firstName, email, type} = e.context.user;
 
               console.log(e.context.user);
 
               if (loginStatus) {
                 navigation.navigate("HomeWrapper",
-                  {id, decks, firstName}
+                  {id, decks, firstName, email, type}
                 );
               }
             });
