@@ -88,6 +88,8 @@ export default function Login({ navigation }) {
 
               const {id, decks, firstName} = e.context.user;
 
+              console.log(e.context.user);
+
               if (loginStatus) {
                 navigation.navigate("HomeWrapper",
                   {id, decks, firstName}
