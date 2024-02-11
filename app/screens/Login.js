@@ -13,6 +13,9 @@ export default function Login({ navigation }) {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
+  const [loginStatus, setLoginStatus] = useState(true);
+  const [message, setMessage] = useState("");
+
   const fetchRequest = async () => {
     const response = await fetch('https://elephantsuite-rearend.herokuapp.com/login', {
       method: 'POST',
@@ -27,10 +30,8 @@ export default function Login({ navigation }) {
     },
     )
 
-    console.log('sent');
-
     const ctx = await response.json();
-    console.log(ctx);
+    return ctx;
   }
 
   return (
@@ -66,6 +67,11 @@ export default function Login({ navigation }) {
           setPassword(e);
         }}
       />
+      <View>
+        <Text style={styles.errorText}>
+          Error: {message}
+        </Text>
+      </View>
       <View style={styles.footer}>
         <Button
           text={"Login"}
@@ -74,7 +80,10 @@ export default function Login({ navigation }) {
               return;
             }
             
-            fetchRequest().then();
+            fetchRequest().then((e) => {
+              setLoginStatus(e.status != "FAILURE");
+              setMessage(e.message ?? "");
+            });
 
           }}
         />
@@ -97,16 +106,22 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     height: "40%",
-    marginTop: 180,
+    marginTop: 160,
   },
   header: {
     fontSize: 43,
     fontFamily: "Bold",
-    marginBottom: 20,
+    marginBottom: 15,
   },
   footer: {
     display: "flex",
     flexDirection: "row",
-    marginTop: 37,
+    marginTop: 25,
   },
+  errorText: {
+    fontFamily: 'Regular',
+    color: "red",
+    fontSize: 16,
+    marginTop: 15,
+  }
 });
