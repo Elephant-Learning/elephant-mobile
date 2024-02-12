@@ -12,9 +12,18 @@ import React, { useState, useRef } from "react";
 import { colors } from "../config/colors";
 import Icon from "react-native-vector-icons/Ionicons";
 
-export default function Flip() {
-  const terms = ["asdf", "asd", "asdff", "dd", "asf", "as"];
-  const definitions = ["a", "b", "c", "d", "e", "f"];
+export default function Flip({route}) {
+
+  const {cards} = route.params;
+
+  const terms = [];
+  const definitions = [];
+
+  for (let i = 0; i < cards.length; i++)  {
+    terms.push(cards[i].term);
+    definitions.push(cards[i].definitions.join("\n"));
+  }
+
   const [textRotateValue, setTextRotateValue] = useState("0deg");
 
   const flipAnimation = useRef(new Animated.Value(0)).current;

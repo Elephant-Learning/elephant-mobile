@@ -2,7 +2,7 @@ import { SafeAreaView, Text, StyleSheet, View } from "react-native";
 import React from "react";
 import DeckCard from "../components/DeckCard";
 
-export default function Home({route}) {
+export default function Home({navigation, route}) {
 
   const {id, firstName, decks} = route.params;
 
@@ -21,7 +21,9 @@ export default function Home({route}) {
       <View style={styles.contentContainer}>
         {decks.map((e, idx) => {
           return <DeckCard title={e.name} 
-          backImg={require("../../assets/test2.jpg")} key={idx}/>
+          backImg={require("../../assets/test2.jpg")} key={idx} onPress={() => {
+            navigation.navigate("Flip", {cards: e.cards});
+          }}/>
         })}
       </View>
     </SafeAreaView>
